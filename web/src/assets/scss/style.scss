@@ -1,0 +1,260 @@
+//reset重置样式
+@import './variables';
+
+*{
+  box-sizing: border-box; 
+  outline: none;
+}
+html{
+    font-size: 13px;
+}
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background: #f1f1f1;
+    -webkit-font-smoothing:antialiased
+}
+a{
+    color: #999;
+}
+p{
+    line-height: 1.5rem;
+}
+//colors
+@each $colorkey,$color in $colors{
+    .text-#{$colorkey}{
+        color: $color;
+    }
+    .bg-#{$colorkey}{
+        background-color: $color;
+    }
+}
+
+
+//text-align
+@each $var in (left,center,right) {
+    .text-#{$var}{
+        text-align: $var !important;
+    }
+}
+
+
+//font size
+@each $sizekey,$size in $font-sizes {
+    .fs-#{$sizekey}{
+        font-size: $size*$base-font-size;
+    }
+}
+
+// text-ellipse
+.text-ellipsis{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+//width,height
+.w-100{
+    width: 100%;
+}
+.h-100{
+    height: 100%;
+}
+//flex布局
+.d-flex{
+    display: flex;
+}
+.flex-column{
+    flex-direction: column;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+@each $key,$value in $flex-jc {
+    .jc-#{$key}{
+        justify-content: $value;
+    }
+}
+@each $key,$value in $flex-ai {
+    .ai-#{$key}{
+        align-items: $value;
+    }
+}
+.flex-1{
+    flex:1
+}
+
+//spacing
+// .m-1=>margin: 0.25rem;
+@each $typekey,$type in $spacing-types {
+    @each $sizekey,$size in $spacing-sizes {
+        .#{$typekey}-#{$sizekey}{
+            #{$type}:$size*$spacing-base-size;
+        }
+    }
+}
+//.mx-1,.my-1
+@each $typekey,$type in $spacing-types {
+    @each $sizekey,$size in $spacing-sizes {
+        .#{$typekey}x-#{$sizekey} {
+            #{$type}-left:$size*$spacing-base-size;
+            #{$type}-right:$size*$spacing-base-size;
+        }
+        .#{$typekey}y-#{$sizekey}{
+            #{$type}-top:$size*$spacing-base-size;
+            #{$type}-bottom:$size*$spacing-base-size;
+        }
+    }
+}
+
+// .mt-1=>margin-top: 0.25rem;
+@each $typekey,$type in $spacing-types {
+    @each $directionkey,$direction in $spacing-directions {
+        @each $sizekey,$size in $spacing-sizes {
+            .#{$typekey}#{$directionkey}-#{$sizekey}{
+                #{$type}-#{$direction}:$size*$spacing-base-size;
+            }
+        }
+    }
+}
+
+//button
+.btn{
+    border: none;
+    border-radius: 0.1538rem;
+    font-size: map-get($font-sizes, 'sm' )*$base-font-size;
+    padding: 0.2rem 0.6rem;
+    &.btn-lg{
+        background: map-get($colors,'white-1');
+        border: 1px solid map-get($colors,'white-2');
+        padding: 0.7rem 1rem;
+        font-size: 1rem;
+    }
+}
+//nav
+.nav{
+    display: flex;
+    .nav-item{
+        border-bottom: solid 3px transparent;
+        padding-bottom:0.2rem ;
+        &.active{
+            color: map-get($colors, "primary" );
+            border-bottom-color:map-get($colors, "primary" );
+        }
+    }
+    &.nav-inverse{
+        .nav-item{
+            color: map-get($colors, 'white' );
+            &.active{
+            border-bottom-color: map-get($colors, 'white' );
+            }
+        }
+    }
+}
+
+//sprite精灵图片
+.sprite{
+    background:url('../images/index.png') no-repeat 0 0;
+    background-size: 28.8462rem;
+    display: inline-block;
+    &.sprite-news{
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
+    &.sprite-Story{
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 90.483% 15.614%;
+    }
+    &.sprite-shop{
+        width: 1.4615rem;
+        height: 1.6923rem;
+        background-position: 36.746% 0.924%;
+    }
+    &.sprite-experience{
+        width: 1.5385rem;
+        height: 1.5385rem;
+        background-position: 10.408% 15.517%;
+    }
+    &.sprite-newcome{
+        width: 2rem;
+        height: 1.6154rem;
+        background-position: 9.728% 1.266%;
+    }
+    &.sprite-inheritance{
+        width: 1.8462rem;
+        height: 1.5385rem;
+        background-position: 36.467% 15.287%;
+    }
+    &.sprite-fellow{
+        width: 2rem;
+        height: 1.6154rem;
+        background-position: 9.728% 1.266%;
+    }
+    &.sprite-king{
+        width: 1.8462rem;
+        height: 1.8462rem;
+        background-position: 63.3% 0.927%;
+    }
+    &.sprite-official{
+        width: 1.8462rem;
+        height: 1.5385rem;
+        background-position: 0 96.207%;
+    }
+    &.sprite-version{
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 90.483% 15.614%;
+    }
+    &.sprite-match{
+        width: 1.5385rem;
+        height: 1.6154rem;
+        background-position: 89.733% 1.266%;
+    }
+    &.sprite-infinite{
+        width: 1.8462rem;
+        height: 1.8462rem;
+        background-position: 63.3% 0.927%;
+    }
+    &.sprite-arrow{
+        width: 0.7692rem;
+        height: 0.7692rem;
+        background-position: 38.577% 52.076%;
+    }
+    &.sprite-icon-new{
+        width: 1rem;
+        height: 1rem;
+        background-position: 0.138% 50.452%;
+    }
+    &.sprite-icon-menu{
+        width: 1.3846rem;
+        height: 0.2308rem;
+        background-position: 47.619% 56.305%;
+    }
+    &.sprite-icon-hero{
+        width: 0.9231rem;
+        height: 1rem;
+        background-position: 46.768% 60.452%;
+    }
+    &.sprite-icon-video-1{
+        width: 1.7692rem;
+        height: 1.6154rem;
+        background-position: 63.546% 27.535%;
+
+    }
+    &.sprite-icon-img-1{
+        width: 20px;
+        height: 20px;
+        background-position: 10.549% 41.379%;
+    }
+}
+
+//borders
+@each $dir in (top,right,bottom,left) {
+    .border-#{$dir}{
+        border-#{$dir}:1px solid $border-color;
+    }
+}
